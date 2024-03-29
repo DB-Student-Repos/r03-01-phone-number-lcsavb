@@ -21,3 +21,21 @@ pub fn number(user_number: &str) -> Option<String> {
             None
         } 
 }
+
+// Copilot solution
+
+// pub fn number(user_number: &str) -> Option<String> {
+//     let mut sanitized_number: String = user_number.chars().filter(|c| c.is_digit(10)).collect();
+
+//     if sanitized_number.starts_with('1') {
+//         sanitized_number.remove(0);
+//     }
+
+//     if sanitized_number.len() == 10 &&
+//        sanitized_number.chars().nth(0).unwrap() >= '2' &&
+//        sanitized_number.chars().nth(3).unwrap() >= '2' {
+//         Some(sanitized_number)
+//     } else {
+//         None
+//     }
+// }
