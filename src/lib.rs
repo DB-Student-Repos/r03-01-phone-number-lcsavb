@@ -1,9 +1,9 @@
 pub fn number(user_number: &str) -> Option<String> {
-    let number = user_number.trim();
+    
 
     let mut sanitized_number = String::new(); 
     
-    for c in number.chars() {
+    for c in user_number.chars() {
         if c.is_digit(10) {
             sanitized_number.push(c);
         }
