@@ -1,41 +1,20 @@
+
+
 pub fn number(user_number: &str) -> Option<String> {
-    
+    let sanitized_number: String = user_number.chars().filter(|c| c.is_digit(10)).collect();
 
-    let mut sanitized_number = String::new(); 
-    
-    for c in user_number.chars() {
-        if c.is_digit(10) {
-            sanitized_number.push(c);
-        }
-    } 
+    match sanitized_number {
 
-    if sanitized_number.chars().nth(0).unwrap() == '1' {
-        sanitized_number.remove(0);
+        n if n.len() == 11 && n.starts_with('1') && 
+        n.chars().nth(1).unwrap() >= '2' && 
+        n.chars().nth(4).unwrap() >= '2' 
+        => Some(n[1..].to_string()),
+
+        n if n.len() == 10 && 
+        n.chars().nth(0).unwrap() >= '2' &&
+        n.chars().nth(3).unwrap() >= '2' => Some(n),
+
+        _ => None
     }
-    
-    if sanitized_number.len() == 10 &&
-       sanitized_number.chars().nth(0).unwrap() >= '2' &&
-       sanitized_number.chars().nth(3).unwrap() >= '2' {
-           Some(sanitized_number)
-        } else {
-            None
-        } 
 }
 
-// Copilot solution
-
-// pub fn number(user_number: &str) -> Option<String> {
-//     let mut sanitized_number: String = user_number.chars().filter(|c| c.is_digit(10)).collect();
-
-//     if sanitized_number.starts_with('1') {
-//         sanitized_number.remove(0);
-//     }
-
-//     if sanitized_number.len() == 10 &&
-//        sanitized_number.chars().nth(0).unwrap() >= '2' &&
-//        sanitized_number.chars().nth(3).unwrap() >= '2' {
-//         Some(sanitized_number)
-//     } else {
-//         None
-//     }
-// }
