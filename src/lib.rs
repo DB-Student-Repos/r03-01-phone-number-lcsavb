@@ -4,10 +4,12 @@ pub fn number(user_number: &str) -> Option<String> {
 
     match sanitized_number.len() {
         11 if sanitized_number.starts_with("1") => {
-            Some(sanitized_number[1..].to_string()).filter(|s| check_nth_digits(s))
+            Some(sanitized_number[1..].to_string())
+            .filter(|s| check_nth_digits(s))
         }
         10 => {
-            Some(sanitized_number).filter(|s| check_nth_digits(s))
+            Some(sanitized_number)
+            .filter(|s| check_nth_digits(s))
         }
         _ => None,
     }
